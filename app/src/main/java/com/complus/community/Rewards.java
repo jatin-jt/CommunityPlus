@@ -54,10 +54,10 @@ public class Rewards extends AppCompatActivity {
                 for(DataSnapshot ds:dataSnapshot.getChildren()){
                     Log.d(TAG, "onDataChange: "+ds);
                     list.add(ds.getValue(RewardEvent.class));
-                    mAdapter = new RewardsAdapter(list,getApplicationContext());
-                    recyclerView.setAdapter(mAdapter);
-
                 }
+                mAdapter = new RewardsAdapter(list,getApplicationContext());
+                recyclerView.setAdapter(mAdapter);
+
             }
 
             @Override

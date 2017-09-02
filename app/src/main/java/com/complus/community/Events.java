@@ -63,11 +63,9 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     current.add(haha);
-                                    adapter_current = new EventAdapter(current, getApplicationContext());
-                                    list.setAdapter(adapter_current);
-
-
                                 }
+                                adapter_current = new EventAdapter(current, getApplicationContext());
+                                list.setAdapter(adapter_current);
                             }
                         }
 
@@ -100,12 +98,10 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     future.add(haha);
-                                    adapter_future = new EventAdapter(future, getApplicationContext());
-                                    list.setAdapter(adapter_future);
-
-
                                 }
                             }
+                            adapter_future = new EventAdapter(future, getApplicationContext());
+                            list.setAdapter(adapter_future);
                         }
 
                     });
@@ -136,11 +132,9 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     past.add(haha);
-                                    adapter_past = new EventAdapter(past, getApplicationContext());
-                                    list.setAdapter(adapter_past);
-
-
                                 }
+                                adapter_past = new EventAdapter(past, getApplicationContext());
+                                list.setAdapter(adapter_past);
                             }
                         }
 
