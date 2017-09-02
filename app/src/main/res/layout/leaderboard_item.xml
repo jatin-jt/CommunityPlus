@@ -16,6 +16,7 @@
 
             <RelativeLayout
                 android:id="@+id/circle"
+                android:padding="16dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/oval" >
