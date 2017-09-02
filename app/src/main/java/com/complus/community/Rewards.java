@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.complus.community.models.RewardEvent;
+import com.complus.community.models.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +44,20 @@ public class Rewards extends AppCompatActivity {
         list = new ArrayList<>();
 
         tpoints = (TextView)findViewById(R.id.rewards_points);
+        FirebaseDatabase.getInstance().getReference().child("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                tpoints.setText(user.getPoints());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         recyclerView = (RecyclerView)findViewById(R.id.rewards_list);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),2);
