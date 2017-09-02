@@ -39,28 +39,77 @@ public class Events extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_ongoing: {
+                    current = new ArrayList<>();
+                    Date newDate = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    final String date = sdf.format(newDate);
+                    Query curref = FirebaseDatabase.getInstance().getReference().child("earn-events").orderByChild("startdate");
+                    curref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    if (current == null || current.isEmpty()) {
-                        load_current();
-                    }
-                    if (adapter_current == null) {
-                        adapter_current = new EventAdapter(current, getApplicationContext());
-                    }
-                    adapter_current.notifyDataSetChanged();
-                    list.setAdapter(adapter_current);
+                        }
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                    EarnEvent haha = ds.getValue(EarnEvent.class);
+                                    if (haha.getStartdate().compareTo(date) > 0) {
+                                        break;
+                                    }
+                                    if(haha.getEnddate().compareTo(date)<0){
+                                        continue;
+                                    }
+                                    Log.d(TAG, "onDataChange: " + haha.getEnddate());
+                                    current.add(haha);
+                                    adapter_current = new EventAdapter(current, getApplicationContext());
+                                    list.setAdapter(adapter_current);
+
+
+                                }
+                            }
+                        }
+
+                    });
+
                     return true;
+
 
                 }
                 case R.id.navigation_upcoming: {
 
-                    if (future == null || future.isEmpty()) {
-                        load_future();
-                    }
-                    if (adapter_future == null) {
-                        adapter_future = new EventAdapter(future, getApplicationContext());
-                    }
-                    adapter_future.notifyDataSetChanged();
-                    list.setAdapter(adapter_future);
+                    future = new ArrayList<>();
+                    Date newDate = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    final String date = sdf.format(newDate);
+                    Query futref = FirebaseDatabase.getInstance().getReference().child("earn-events").orderByChild("startdate");
+                    futref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                    EarnEvent haha = ds.getValue(EarnEvent.class);
+                                    if (haha.getStartdate().compareTo(date) <= 0) {
+                                        continue;
+                                    }
+                                    Log.d(TAG, "onDataChange: " + haha.getEnddate());
+                                    future.add(haha);
+                                    adapter_future = new EventAdapter(future, getApplicationContext());
+                                    list.setAdapter(adapter_future);
+
+
+                                }
+                            }
+                        }
+
+                    });
+
                     return true;
 
                 }
@@ -73,47 +122,28 @@ public class Events extends AppCompatActivity {
                     Query pastref = FirebaseDatabase.getInstance().getReference().child("earn-events").orderByChild("enddate");
                     pastref.addValueEventListener(new ValueEventListener() {
                         @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+
+                        @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     EarnEvent haha = ds.getValue(EarnEvent.class);
-                                    if (haha.getEnddate().compareTo(date) > 0) {
+                                    if (haha.getEnddate().compareTo(date) >= 0) {
                                         break;
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     past.add(haha);
                                     adapter_past = new EventAdapter(past, getApplicationContext());
                                     list.setAdapter(adapter_past);
+
+
                                 }
                             }
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            Log.d(TAG, "onChildAdded: " + dataSnapshot.getValue(EarnEvent.class).getEnddate());
-                            past.add(dataSnapshot.getValue(EarnEvent.class));
-                            adapter_past = new EventAdapter(past, getApplicationContext());
-                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                            list.setLayoutManager(mLayoutManager);
-                            list.setAdapter(adapter_past);
                         }
 
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
                     });
 
                     return true;
@@ -132,18 +162,10 @@ public class Events extends AppCompatActivity {
 
         list = (RecyclerView) findViewById(R.id.event_recycler_view);
 
-
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        list.setLayoutManager(mLayoutManager);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
-    private void load_current() {
-
-    }
-
-    private void load_future() {
-    }
-
-
 
 }
