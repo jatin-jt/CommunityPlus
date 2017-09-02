@@ -22,14 +22,15 @@ public class ShowQRCode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_qrcode);
         ImageView imgView = (ImageView) findViewById(R.id.img_qr_code);
-        Bitmap bm = generateQRBitmap(FirebaseAuth.getInstance().getCurrentUser().getUid(),this,1);
+        Bitmap bm = generateQRBitmap(FirebaseAuth.getInstance().getCurrentUser().getUid(), this, 1);
 
-       // Glide.with(this).load(bm).into(imgView);
+        // Glide.with(this).load(bm).into(imgView);
         imgView.setImageBitmap(bm);
     }
-    public static Bitmap generateQRBitmap(String content, Context context, int flag){
+
+    public static Bitmap generateQRBitmap(String content, Context context, int flag) {
         Bitmap bitmap = null;
-        int width=1024,height=1024;
+        int width = 1024, height = 1024;
 
         QRCodeWriter writer = new QRCodeWriter();
         try {
