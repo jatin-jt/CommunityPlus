@@ -62,7 +62,15 @@
         </activity>
         <activity
             android:name=".Leaderboard"
-            android:label="@string/title_activity_leaderboard"></activity>
+            android:label="@string/title_activity_leaderboard" />
+        <activity
+            android:name=".History"
+            android:label="@string/title_activity_history"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

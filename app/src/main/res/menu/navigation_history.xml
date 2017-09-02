@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/history_earned"
+        android:icon="@drawable/ic_earned"
+        android:title="Earned" />
+
+    <item
+        android:id="@+id/history_redeemed"
+        android:icon="@drawable/ic_redeemed"
+        android:title="Redeemed" />
+
+
+</menu>
