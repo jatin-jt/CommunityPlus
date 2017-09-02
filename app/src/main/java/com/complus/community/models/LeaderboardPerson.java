@@ -6,6 +6,7 @@ package com.complus.community.models;
 
 public class LeaderboardPerson {
 
+    String rank;
     String name;
     String points;
 
@@ -13,7 +14,8 @@ public class LeaderboardPerson {
     public LeaderboardPerson() {
     }
 
-    public LeaderboardPerson(String name, String points) {
+    public LeaderboardPerson(String rank, String name, String points) {
+        this.rank = rank;
         this.name = name;
         this.points = points;
     }
@@ -34,4 +36,11 @@ public class LeaderboardPerson {
         this.points = points;
     }
 
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
 }
