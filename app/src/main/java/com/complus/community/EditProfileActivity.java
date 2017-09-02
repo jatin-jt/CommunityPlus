@@ -85,6 +85,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             Toast.makeText(EditProfileActivity.this, "Saved changes! :)", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(EditProfileActivity.this, ProfileActivity.class);
                             intent.putExtra("userid", user.getUid());
+                            finish();
                             startActivity(intent);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
