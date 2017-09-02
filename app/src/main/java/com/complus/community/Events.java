@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.complus.community.models.EarnEvent;
@@ -160,6 +161,8 @@ public class Events extends AppCompatActivity {
         list.setLayoutManager(mLayoutManager);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        View view = navigation.findViewById(R.id.navigation_ongoing);
+        view.performClick();
     }
 
 }

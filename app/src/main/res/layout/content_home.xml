@@ -22,11 +22,20 @@
             android:id="@+id/tv_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:textSize="50dp"
             android:textColor="@color/tw__composer_white"
             android:text="200" />
+
+        <TextView
+            android:layout_below="@id/tv_point"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tw__composer_white"
+            android:typeface="monospace"
+            android:text="Points!"/>
     </RelativeLayout>
 
 

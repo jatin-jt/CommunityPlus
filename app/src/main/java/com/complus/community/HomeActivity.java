@@ -120,6 +120,8 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigation.findViewById(R.id.history_earned);
+        view.performClick();
 
         View header = navigationView.getHeaderView(0);
 
@@ -195,6 +197,10 @@ public class HomeActivity extends AppCompatActivity
             intent.putExtra("userid", user.getUid());
 
             startActivity(intent);
+        }
+        else if(id == R.id.nav_signout)
+        {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
