@@ -27,6 +27,9 @@ import com.bumptech.glide.Glide;
 import com.complus.community.models.EarnEvent;
 import com.complus.community.models.RewardEvent;
 import com.complus.community.models.User;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -200,7 +203,14 @@ public class HomeActivity extends AppCompatActivity
         }
         else if(id == R.id.nav_signout)
         {
-
+            AuthUI.getInstance()
+                    .signOut(HomeActivity.this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public void onComplete(@NonNull Task<Void> task) {
+                            finish();
+                            startActivity(new Intent(HomeActivity.this, StartActivity.class));
+                        }
+                    });
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
