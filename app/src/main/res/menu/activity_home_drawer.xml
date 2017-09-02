@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_event_black_24dp"
             android:title="Events" />
         <item
-            android:id="@+id/nav_myactivity"
+            android:id="@+id/nav_history"
             android:icon="@drawable/ic_local_activity_black_24dp"
-            android:title="My Activity" />
+            android:title="History" />
         <item
             android:id="@+id/nav_addcomplaint"
             android:icon="@drawable/ic_report_black_24dp"

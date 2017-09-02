@@ -22,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static com.complus.community.R.id.fab;
 
 public class ProfileActivity extends AppCompatActivity {
 

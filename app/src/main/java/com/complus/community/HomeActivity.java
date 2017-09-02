@@ -2,8 +2,11 @@ package com.complus.community;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,6 +25,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.complus.community.models.EarnEvent;
+import com.complus.community.models.RewardEvent;
 import com.complus.community.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,6 +50,32 @@ public class HomeActivity extends AppCompatActivity
 
     Button btnClaimPoints;
 
+    private RecyclerView history;
+
+    private ArrayList<RewardEvent> redeemed;
+    private ArrayList<EarnEvent> earned;
+
+    private RewardsAdapter redeemed_adapter;
+    private EventAdapter earned_adapter;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.history_earned: {
+                    return true;
+                }
+                case R.id.history_redeemed: {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,20 +98,16 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        history = (RecyclerView)findViewById(R.id.lv_recents);
 
         btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
 
@@ -149,7 +175,10 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(this,Events.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_myactivity) {
+        } else if (id == R.id.nav_history) {
+
+            Intent intent = new Intent(this,History.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_addcomplaint) {
             startActivity(new Intent(this,AddComplaint.class));
