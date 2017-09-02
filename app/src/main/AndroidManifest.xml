@@ -50,6 +50,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".EditProfileActivity"></activity>
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AddComplaint" />
+        <activity android:name=".ShowQRCode"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.complus.community.models.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +29,8 @@ public class HomeActivity extends AppCompatActivity
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     User mUser;
+
+    Button btnClaimPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,15 @@ public class HomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
+
+        btnClaimPoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,ShowQRCode.class));
+            }
+        });
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
