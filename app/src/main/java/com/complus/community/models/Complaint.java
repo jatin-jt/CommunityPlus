@@ -5,18 +5,20 @@ package com.complus.community.models;
  */
 
 public class Complaint {
-    String category,threatLevel,title,desc,date,picEnabled,id;
+    String category,threatLevel,title,desc,date,picEnabled,id,userid;
 
-    public Complaint() {
-    }
-
-    public Complaint(String category, String threatLevel, String title, String desc, String date, String picEnabled) {
+    public Complaint(String category, String threatLevel, String title, String desc, String date, String picEnabled, String id, String userid) {
         this.category = category;
         this.threatLevel = threatLevel;
         this.title = title;
         this.desc = desc;
         this.date = date;
         this.picEnabled = picEnabled;
+        this.id = id;
+        this.userid = userid;
+    }
+
+    public Complaint() {
     }
 
     public String getCategory() {
@@ -65,5 +67,21 @@ public class Complaint {
 
     public void setPicEnabled(String picEnabled) {
         this.picEnabled = picEnabled;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

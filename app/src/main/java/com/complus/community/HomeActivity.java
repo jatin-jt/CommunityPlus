@@ -1,5 +1,6 @@
 package com.complus.community;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -87,7 +88,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_myactivity) {
 
         } else if (id == R.id.nav_addcomplaint) {
-
+            startActivity(new Intent(this,AddComplaint.class));
         } else if (id == R.id.nav_leaderboard) {
 
         } else if (id == R.id.nav_rewards) {
