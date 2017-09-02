@@ -112,6 +112,9 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_events) {
 
+            Intent intent = new Intent(this,Events.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_myactivity) {
 
         } else if (id == R.id.nav_addcomplaint) {
