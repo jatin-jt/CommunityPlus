@@ -199,7 +199,7 @@ public class AddComplaint extends AppCompatActivity implements IPickResult{
                     });
                 }
 
-                mainRef.child("users").child(user.getUid()).child("complaints").child(cId)
+                mainRef.child("users-complaints").child(user.getUid()).child(cId)
                         .setValue("true").addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

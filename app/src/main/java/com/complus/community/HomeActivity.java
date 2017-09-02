@@ -139,7 +139,7 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation_events view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard) {
@@ -157,9 +157,13 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_rewards) {
 
+            Intent intent = new Intent(this,Rewards.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             intent.putExtra("userid", user.getUid());
+
             startActivity(intent);
         }
 

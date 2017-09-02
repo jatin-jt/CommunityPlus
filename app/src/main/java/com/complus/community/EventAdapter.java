@@ -3,6 +3,7 @@ package com.complus.community;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +50,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         return new MyViewHolder(itemView);
     }
 
+    private static final String TAG = "EventAdapter";
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         holder.event_name.setText(eventList.get(position).getTitle());
         holder.event_location.setText(eventList.get(position).getLocation());
-        holder.event_date.setText(eventList.get(position).getStartDate() + " to " + eventList.get(position).getEndDate());
-
+        holder.event_date.setText(eventList.get(position).getStartdate() + " to " + eventList.get(position).getEnddate());
+        Log.d(TAG, "onBindViewHolder: "+ eventList.get(position).getEnddate());
     }
 
 
