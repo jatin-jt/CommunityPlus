@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "48852286177",
+    "firebase_url": "https://thegame-645ae.firebaseio.com",
+    "project_id": "thegame-645ae",
+    "storage_bucket": "thegame-645ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48852286177:android:541e464c382ff5bb",
+        "android_client_info": {
+          "package_name": "com.complus.community"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48852286177-gjf5j03tt0fgs1me7hofcauqbov0sutm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.complus.community",
+            "certificate_hash": "b6b5e932f9f5a418e696a790a288c54bda928ed0"
+          }
+        },
+        {
+          "client_id": "48852286177-rhqmva7tcf0k1jl76mnqhfa5sndkkkl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfSl56YTgsavAmQ-VczYII5znvY737kog"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48852286177-rhqmva7tcf0k1jl76mnqhfa5sndkkkl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
