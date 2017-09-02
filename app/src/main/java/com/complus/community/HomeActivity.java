@@ -14,7 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.complus.community.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +32,8 @@ public class HomeActivity extends AppCompatActivity
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     User mUser;
+    TextView textView;
+    ImageView imageView;
 
     Button btnClaimPoints;
 
@@ -80,6 +85,14 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+
+
+        imageView = (ImageView) header.findViewById(R.id.imageView);
+        textView = (TextView) header.findViewById(R.id.textView);
+        Glide.with(this).load(user.getPhotoUrl().toString()).into(imageView);
+        textView.setText("Hello, " + user.getDisplayName());
     }
 
     @Override
