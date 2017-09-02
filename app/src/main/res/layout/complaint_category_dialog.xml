@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <RadioGroup
+        android:id="@+id/rg_complaintcategory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_sewage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sewage" />
+
+        <RadioButton
+            android:id="@+id/rb_waste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Waste" />
+
+        <RadioButton
+            android:id="@+id/rb_watersupply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Water Supply" />
+
+        <RadioButton
+            android:id="@+id/rb_others"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Others" />
+
+
+    </RadioGroup>
+
+</LinearLayout>
