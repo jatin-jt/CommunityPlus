@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
@@ -84,6 +86,28 @@ public class Events extends AppCompatActivity {
                                     list.setAdapter(adapter_past);
                                 }
                             }
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            Log.d(TAG, "onChildAdded: " + dataSnapshot.getValue(EarnEvent.class).getEnddate());
+                            past.add(dataSnapshot.getValue(EarnEvent.class));
+                            adapter_past = new EventAdapter(past, getApplicationContext());
+                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            list.setLayoutManager(mLayoutManager);
+                            list.setAdapter(adapter_past);
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
                         }
 
                         @Override
@@ -119,6 +143,7 @@ public class Events extends AppCompatActivity {
 
     private void load_future() {
     }
+
 
 
 }
