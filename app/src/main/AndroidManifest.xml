@@ -31,12 +31,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddComplaint"
             android:parentActivityName=".HomeActivity" />
+
         <activity
             android:name=".Events"
             android:label="@string/title_activity_events"
@@ -45,13 +47,31 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.complus.community.HomeActivity" />
         </activity>
-        android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditProfileActivity" />
-        android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShowQRCode" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
+
+        <activity android:name=".EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
+
+        <activity android:name=".ShowQRCode"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
+
         <activity
             android:name=".Rewards"
             android:label="@string/title_activity_rewards"
@@ -61,9 +81,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.complus.community.HomeActivity" />
         </activity>
+
         <activity
             android:name=".Leaderboard"
-            android:label="@string/title_activity_leaderboard" />
+            android:label="@string/title_activity_leaderboard"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
+
         <activity
             android:name=".History"
             android:label="@string/title_activity_history"

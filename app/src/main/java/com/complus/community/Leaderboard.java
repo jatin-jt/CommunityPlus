@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.complus.community.models.LeaderboardPerson;
@@ -111,6 +112,8 @@ public class Leaderboard extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        View view = navigation.findViewById(R.id.leaderboard_overall);
+        view.performClick();
     }
     private void doThis(){
         Query localScoreRef = FirebaseDatabase.getInstance().
