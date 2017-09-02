@@ -141,6 +141,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             Intent intent = new Intent(this, ProfileActivity.class);
             intent.putExtra("userid", user.getUid());
+
             startActivity(intent);
         }
 

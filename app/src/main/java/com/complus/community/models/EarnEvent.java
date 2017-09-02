@@ -5,27 +5,18 @@ package com.complus.community.models;
  */
 
 public class EarnEvent {
-    String title,desc,id,startDate,endDate,location;
-    int points;
+    String desc, enddate, id, location, points, startdate, title;
 
     public EarnEvent() {
     }
 
-    public EarnEvent(String title, String desc, String id, String startDate, String endDate, String location, int points) {
-        this.title = title;
+    public EarnEvent(String desc, String enddate, String id, String location, String points, String startdate, String title) {
         this.desc = desc;
+        this.enddate = enddate;
         this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.location = location;
         this.points = points;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
+        this.startdate = startdate;
         this.title = title;
     }
 
@@ -37,6 +28,14 @@ public class EarnEvent {
         this.desc = desc;
     }
 
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
+    }
+
     public String getId() {
         return id;
     }
@@ -45,33 +44,37 @@ public class EarnEvent {
         this.id = id;
     }
 
-    public String getStartDate() {
-        return startDate;
+    public String getLocation() {
+        return location;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public int getPoints() {
+    public String getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(String points) {
         this.points = points;
     }
 
-    public String getLocation(){return location;}
+    public String getStartdate() {
+        return startdate;
+    }
 
-    public void setLocation(String location){this.location = location;}
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
+    }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
+
+
