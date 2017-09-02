@@ -25,7 +25,7 @@ public class Events extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home: {
+                case R.id.navigation_ongoing: {
 
                     if(current == null || current.isEmpty())
                     {
@@ -40,7 +40,7 @@ public class Events extends AppCompatActivity {
                     return true;
 
                 }
-                case R.id.navigation_dashboard: {
+                case R.id.navigation_upcoming: {
 
                     if(future == null || future.isEmpty())
                     {
@@ -55,7 +55,7 @@ public class Events extends AppCompatActivity {
                     return true;
 
                 }
-                case R.id.navigation_notifications: {
+                case R.id.navigation_past: {
 
                     if(past == null || past.isEmpty())
                     {
