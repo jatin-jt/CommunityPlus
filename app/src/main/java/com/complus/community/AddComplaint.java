@@ -1,16 +1,22 @@
 package com.complus.community;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.complus.community.models.Complaint;
@@ -42,6 +48,7 @@ public class AddComplaint extends AppCompatActivity implements IPickResult{
     FirebaseUser user;
     DatabaseReference mainRef = FirebaseDatabase.getInstance().getReference();
     StorageReference storageRef = FirebaseStorage.getInstance().getReference();
+    RadioGroup rgComplaintCategory, rgThreatCategory;
     private static final String TAG = "AddComplaint";
 
     @Override
@@ -57,6 +64,96 @@ public class AddComplaint extends AppCompatActivity implements IPickResult{
 
         addComplaint = (Button) findViewById(R.id.btn_add_complaint);
         addImage = (Button) findViewById(R.id.btn_add_image);
+
+        cat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater li = LayoutInflater.from(AddComplaint.this);
+                final View modeDialogView = li.inflate(R.layout.complaint_category_dialog, null);
+                final AlertDialog.Builder alert = new AlertDialog.Builder(AddComplaint.this);
+                rgComplaintCategory = (RadioGroup) modeDialogView.findViewById(R.id.rg_complaintcategory);
+                final RadioButton rbSewage = (RadioButton) modeDialogView.findViewById(R.id.rb_sewage);
+                final RadioButton rbOthers = (RadioButton) modeDialogView.findViewById(R.id.rb_others);
+                final RadioButton rbWaste = (RadioButton) modeDialogView.findViewById(R.id.rb_waste);
+                final RadioButton rbWaterSupply = (RadioButton) modeDialogView.findViewById(R.id.rb_watersupply);
+
+
+                rgComplaintCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+
+                    }
+                });
+                alert.setView(modeDialogView);
+                alert.setTitle("Complaint Category");
+                alert.setPositiveButton("Set Category", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String tMode = "";
+                        if (rbSewage.isChecked()) {
+                            tMode = "Sewage";
+                        } else if (rbWaste.isChecked()) {
+                            tMode = "Waste";
+                        } else if (rbWaterSupply.isChecked()) {
+                            tMode = "Water Supply";
+                        } else if (rbOthers.isChecked()) {
+                            tMode = "Others";
+                        }
+                        cat.setText(tMode);
+                    }
+                });
+                alert.setNegativeButton("CANCEL", null);
+                alert.create();
+                alert.show();
+            }
+        });
+
+        threat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater li = LayoutInflater.from(AddComplaint.this);
+                final View modeDialogView = li.inflate(R.layout.threat_level_dialog, null);
+                final AlertDialog.Builder alert = new AlertDialog.Builder(AddComplaint.this);
+                rgThreatCategory = (RadioGroup) modeDialogView.findViewById(R.id.rg_threatlevel);
+                final RadioButton rbLow = (RadioButton) modeDialogView.findViewById(R.id.rb_low);
+                final RadioButton rbModerate = (RadioButton) modeDialogView.findViewById(R.id.rb_moderate);
+                final RadioButton rbSubstantial = (RadioButton) modeDialogView.findViewById(R.id.rb_substantial);
+                final RadioButton rbSevere = (RadioButton) modeDialogView.findViewById(R.id.rb_severe);
+                final RadioButton rbCritical = (RadioButton) modeDialogView.findViewById(R.id.rb_critical);
+
+
+                rgComplaintCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+
+                    }
+                });
+                alert.setView(modeDialogView);
+                alert.setTitle("Threat Level");
+                alert.setPositiveButton("Set Level", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String tMode = "";
+                        if (rbLow.isChecked()) {
+                            tMode = "Low";
+                        } else if (rbModerate.isChecked()) {
+                            tMode = "Moderate";
+                        } else if (rbSubstantial.isChecked()) {
+                            tMode = "Substantial";
+                        } else if (rbSevere.isChecked()) {
+                            tMode = "Severe";
+                        }
+                        else if (rbCritical.isChecked()) {
+                            tMode = "Critical";
+                        }
+                        threat.setText(tMode);
+                    }
+                });
+                alert.setNegativeButton("CANCEL", null);
+                alert.create();
+                alert.show();
+            }
+        });
 
         imgView = (ImageView) findViewById(R.id.img_view_item);
 
