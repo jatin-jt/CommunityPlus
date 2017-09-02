@@ -5,18 +5,19 @@ package com.complus.community.models;
  */
 
 public class EarnEvent {
-    String title,desc,id,startDate,endDate;
+    String title,desc,id,startDate,endDate,location;
     int points;
 
     public EarnEvent() {
     }
 
-    public EarnEvent(String title, String desc, String id, String startDate, String endDate, int points) {
+    public EarnEvent(String title, String desc, String id, String startDate, String endDate, String location, int points) {
         this.title = title;
         this.desc = desc;
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.location = location;
         this.points = points;
     }
 
@@ -67,4 +68,10 @@ public class EarnEvent {
     public void setPoints(int points) {
         this.points = points;
     }
+
+    public String getLocation(){return location;}
+
+    public void setLocation(String location){this.location = location;}
+
+
 }
