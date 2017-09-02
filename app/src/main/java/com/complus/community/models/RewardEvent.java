@@ -6,17 +6,25 @@ package com.complus.community.models;
 
 public class RewardEvent {
 
-    String title,desc,id;
-    int points;
+    String title,desc,id, points,piclink;
 
     public RewardEvent() {
     }
 
-    public RewardEvent(String title, String desc, String id, int points) {
+    public RewardEvent(String title, String desc, String id, String points, String piclink) {
         this.title = title;
         this.desc = desc;
         this.id = id;
         this.points = points;
+        this.piclink = piclink;
+    }
+
+    public String getPiclink() {
+        return piclink;
+    }
+
+    public void setPiclink(String piclink) {
+        this.piclink = piclink;
     }
 
     public String getTitle() {
@@ -43,13 +51,11 @@ public class RewardEvent {
         this.id = id;
     }
 
-    public int getPoints() {
+    public String getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(String points) {
         this.points = points;
     }
-
-
 }

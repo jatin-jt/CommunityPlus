@@ -1,12 +1,16 @@
 package com.complus.community;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.complus.community.models.EarnEvent;
 import com.complus.community.models.RewardEvent;
 
@@ -23,10 +27,12 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView reward_name;
+        public ImageView reward_pic;
 
         public MyViewHolder(View view) {
             super(view);
             reward_name = (TextView) view.findViewById(R.id.reward_item_name);
+            reward_pic = (ImageView) view.findViewById(R.id.reward_item_pic);
         }
     }
 
@@ -44,10 +50,14 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
         return new RewardsAdapter.MyViewHolder(itemView);
     }
 
+    private static final String TAG = "RewardsAdapter";
     @Override
     public void onBindViewHolder(RewardsAdapter.MyViewHolder holder, final int position) {
 
         holder.reward_name.setText(rewardList.get(position).getTitle());
+        Log.d(TAG, "onBindViewHolder: "+rewardList.get(position).getPiclink());
+        Glide.with(mcontext).load(rewardList.get(position).getPiclink())
+                .into(holder.reward_pic);
 
     }
 
