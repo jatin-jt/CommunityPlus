@@ -64,6 +64,7 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     current.add(haha);
+
                                 }
                                 adapter_current = new EventAdapter(current, getApplicationContext());
                                 list.setAdapter(adapter_current);
