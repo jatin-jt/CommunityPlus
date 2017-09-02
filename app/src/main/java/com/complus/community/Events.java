@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.complus.community.models.EarnEvent;
@@ -63,11 +64,10 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     current.add(haha);
-                                    adapter_current = new EventAdapter(current, getApplicationContext());
-                                    list.setAdapter(adapter_current);
-
 
                                 }
+                                adapter_current = new EventAdapter(current, getApplicationContext());
+                                list.setAdapter(adapter_current);
                             }
                         }
 
@@ -100,12 +100,10 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     future.add(haha);
-                                    adapter_future = new EventAdapter(future, getApplicationContext());
-                                    list.setAdapter(adapter_future);
-
-
                                 }
                             }
+                            adapter_future = new EventAdapter(future, getApplicationContext());
+                            list.setAdapter(adapter_future);
                         }
 
                     });
@@ -136,11 +134,9 @@ public class Events extends AppCompatActivity {
                                     }
                                     Log.d(TAG, "onDataChange: " + haha.getEnddate());
                                     past.add(haha);
-                                    adapter_past = new EventAdapter(past, getApplicationContext());
-                                    list.setAdapter(adapter_past);
-
-
                                 }
+                                adapter_past = new EventAdapter(past, getApplicationContext());
+                                list.setAdapter(adapter_past);
                             }
                         }
 
@@ -166,6 +162,8 @@ public class Events extends AppCompatActivity {
         list.setLayoutManager(mLayoutManager);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        View view = navigation.findViewById(R.id.navigation_ongoing);
+        view.performClick();
     }
 
 }

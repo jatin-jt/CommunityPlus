@@ -122,7 +122,7 @@ public class AddComplaint extends AppCompatActivity implements IPickResult{
                 final RadioButton rbCritical = (RadioButton) modeDialogView.findViewById(R.id.rb_critical);
 
 
-                rgComplaintCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                rgThreatCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
 

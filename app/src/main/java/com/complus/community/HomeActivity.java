@@ -2,8 +2,11 @@ package com.complus.community;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,7 +25,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.complus.community.models.EarnEvent;
+import com.complus.community.models.RewardEvent;
 import com.complus.community.models.User;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -46,6 +53,32 @@ public class HomeActivity extends AppCompatActivity
 
     Button btnClaimPoints;
 
+    private RecyclerView history;
+
+    private ArrayList<RewardEvent> redeemed;
+    private ArrayList<EarnEvent> earned;
+
+    private RewardsAdapter redeemed_adapter;
+    private EventAdapter earned_adapter;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.history_earned: {
+                    return true;
+                }
+                case R.id.history_redeemed: {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,20 +101,16 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        history = (RecyclerView)findViewById(R.id.lv_recents);
 
         btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
 
@@ -94,6 +123,8 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigation.findViewById(R.id.history_earned);
+        view.performClick();
 
         View header = navigationView.getHeaderView(0);
 
@@ -149,11 +180,15 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(this,Events.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_myactivity) {
+        } else if (id == R.id.nav_history) {
+
+            Intent intent = new Intent(this,History.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_addcomplaint) {
             startActivity(new Intent(this,AddComplaint.class));
         } else if (id == R.id.nav_leaderboard) {
+            startActivity(new Intent(this,Leaderboard.class));
 
         } else if (id == R.id.nav_rewards) {
 
@@ -165,6 +200,17 @@ public class HomeActivity extends AppCompatActivity
             intent.putExtra("userid", user.getUid());
 
             startActivity(intent);
+        }
+        else if(id == R.id.nav_signout)
+        {
+            AuthUI.getInstance()
+                    .signOut(HomeActivity.this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public void onComplete(@NonNull Task<Void> task) {
+                            finish();
+                            startActivity(new Intent(HomeActivity.this, StartActivity.class));
+                        }
+                    });
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.complus.community.Leaderboard">
+    tools:context="com.complus.community.History">
 
     <FrameLayout
         android:id="@+id/content"
@@ -15,7 +15,7 @@
         android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/leaderboard_list"
+            android:id="@+id/history_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -27,6 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        app:menu="@menu/navigation_leaderboard" />
+        app:menu="@menu/navigation_history" />
 
 </LinearLayout>
