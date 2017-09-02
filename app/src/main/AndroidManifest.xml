@@ -35,12 +35,6 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".EditProfileActivity"></activity>
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddComplaint" />
         <activity
             android:name=".Events"
@@ -50,6 +44,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.complus.community.HomeActivity" />
         </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".EditProfileActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
