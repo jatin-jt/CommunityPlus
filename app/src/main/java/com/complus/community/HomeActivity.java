@@ -15,8 +15,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.complus.community.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    User mUser;
 
     Button btnClaimPoints;
 
@@ -26,6 +38,21 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    startActivity(new Intent(HomeActivity.this, EditProfileActivity.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +124,9 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_events) {
 
+            Intent intent = new Intent(this,Events.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_myactivity) {
 
         } else if (id == R.id.nav_addcomplaint) {
@@ -106,7 +136,9 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_rewards) {
 
         } else if (id == R.id.nav_profile) {
-
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra("userid", user.getUid());
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

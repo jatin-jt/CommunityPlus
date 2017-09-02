@@ -9,10 +9,10 @@ public class User {
     String name;
     String contact;
     String address;
-    int pincode;
-    int points;
+    String pincode;
+    String points;
 
-    public User(String id, String name, String contact, String address, int pincode, int points) {
+    public User(String id, String name, String contact, String address, String pincode, String points) {
         this.id = id;
         this.name = name;
         this.contact = contact;
@@ -56,19 +56,19 @@ public class User {
         this.address = address;
     }
 
-    public int getPincode() {
+    public String getPincode() {
         return pincode;
     }
 
-    public void setPincode(int pincode) {
+    public void setPincode(String pincode) {
         this.pincode = pincode;
     }
 
-    public int getPoints() {
+    public String getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(String points) {
         this.points = points;
     }
 }
