@@ -16,8 +16,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Events extends AppCompatActivity {
 
@@ -62,29 +65,25 @@ public class Events extends AppCompatActivity {
                 case R.id.navigation_past: {
 
                     past = new ArrayList<>();
-                    DatabaseReference pastref = FirebaseDatabase.getInstance().getReference().child("earn-events");
-                    pastref.addChildEventListener(new ChildEventListener() {
+                    Date newDate = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    final String date = sdf.format(newDate);
+                    Query pastref = FirebaseDatabase.getInstance().getReference().child("earn-events").orderByChild("enddate");
+                    pastref.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            Log.d(TAG, "onChildAdded: " + dataSnapshot.getValue(EarnEvent.class).getEnddate());
-                            past.add(dataSnapshot.getValue(EarnEvent.class));
-                            adapter_past = new EventAdapter(past, getApplicationContext());
-                            list.setAdapter(adapter_past);
-                        }
-
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                    EarnEvent haha = ds.getValue(EarnEvent.class);
+                                    if (haha.getEnddate().compareTo(date) > 0) {
+                                        break;
+                                    }
+                                    Log.d(TAG, "onDataChange: " + haha.getEnddate());
+                                    past.add(haha);
+                                    adapter_past = new EventAdapter(past, getApplicationContext());
+                                    list.setAdapter(adapter_past);
+                                }
+                            }
                         }
 
                         @Override
@@ -92,6 +91,7 @@ public class Events extends AppCompatActivity {
 
                         }
                     });
+
                     return true;
 
                 }
@@ -119,7 +119,6 @@ public class Events extends AppCompatActivity {
 
     private void load_future() {
     }
-
 
 
 }
