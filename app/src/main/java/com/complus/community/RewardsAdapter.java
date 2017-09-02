@@ -26,7 +26,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
 
         public MyViewHolder(View view) {
             super(view);
-            reward_name = (TextView) view.findViewById(R.id.event_item_name);
+            reward_name = (TextView) view.findViewById(R.id.reward_item_name);
         }
     }
 
@@ -39,7 +39,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
     @Override
     public RewardsAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.events_item, parent, false);
+                .inflate(R.layout.rewards_item, parent, false);
 
         return new RewardsAdapter.MyViewHolder(itemView);
     }

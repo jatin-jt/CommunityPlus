@@ -33,13 +33,19 @@ public class Rewards extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        list = new ArrayList<>();
+
         tpoints = (TextView)findViewById(R.id.rewards_points);
 
         recyclerView = (RecyclerView)findViewById(R.id.rewards_list);
         mAdapter = new RewardsAdapter(list,getApplicationContext());
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),2);
         recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(mAdapter);
 
+        list.add(new RewardEvent("test","test","test",100));
+        list.add(new RewardEvent("test2","test2","test2",200));
+        mAdapter.notifyDataSetChanged();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
