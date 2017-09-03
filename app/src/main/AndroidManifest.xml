@@ -95,7 +95,16 @@
                 android:value="com.complus.community.HomeActivity" />
         </activity>
         <activity android:name=".EarnActivity" />
-        <activity android:name=".RewardActivity"></activity>
+        <activity android:name=".RewardActivity" />
+        <activity
+            android:name=".MyComplaints"
+            android:label="@string/title_activity_my_complaints"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
