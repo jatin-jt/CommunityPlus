@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +46,7 @@ public class HomeActivity extends AppCompatActivity
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     User mUser;
-    TextView textView;
+    TextView textView,tvScore;
     ImageView imageView;
 
     Button btnClaimPoints;
@@ -86,12 +84,20 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        tvScore = (TextView) findViewById(R.id.tv_point);
+        history = (RecyclerView)findViewById(R.id.lv_recents);
+
+        btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
+
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()) {
                     startActivity(new Intent(HomeActivity.this, EditProfileActivity.class));
+                }
+                else {
+                    tvScore.setText(dataSnapshot.getValue(User.class).getPoints());
                 }
             }
 
@@ -109,10 +115,6 @@ public class HomeActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        history = (RecyclerView)findViewById(R.id.lv_recents);
-
-        btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
 
         btnClaimPoints.setOnClickListener(new View.OnClickListener() {
             @Override
