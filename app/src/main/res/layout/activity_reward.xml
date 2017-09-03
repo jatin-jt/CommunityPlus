@@ -88,6 +88,16 @@
                 android:textColor="#000000"
                 android:textSize="20dp" />
 
+            <Button
+                android:id="@+id/reward_redeem_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center"
+                android:textColor="@color/tw__composer_white"
+                android:background="@drawable/oval2"
+                android:text="Redeem"/>
+
 
 
 
