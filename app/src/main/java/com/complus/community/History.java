@@ -112,6 +112,8 @@ public class History extends AppCompatActivity {
     void populateRedeemedEvents(){
         redeemed = new ArrayList<>();
         k = hylist.size();
+        redeemed_adapter = new RedeemAdapter(redeemed,getApplicationContext());
+        history.setAdapter(redeemed_adapter);
         i=0;
         for(final Pair<String,String> pss:hylist){
             i++;
@@ -139,6 +141,8 @@ public class History extends AppCompatActivity {
     void populateEvents(){
         earned = new ArrayList<>();
         k = myList.size();
+        earned_adapter = new EventAdapter(earned,getApplication());
+        history.setAdapter(earned_adapter);
         i=0;
         for(final Pair<String,String> pss:myList){
             i++;

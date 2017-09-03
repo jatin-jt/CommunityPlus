@@ -1,6 +1,7 @@
 package com.complus.community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -56,6 +57,16 @@ public class RedeemAdapter extends RecyclerView.Adapter<RedeemAdapter.MyViewHold
 
         holder.reward_name.setText(redeemList.get(position).first.getTitle());
         holder.date_redeemed.setText(redeemList.get(position).second);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext,RewardActivity.class);
+                intent.putExtra("ID",redeemList.get(position).first.getId());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+            }
+        });
 
     }
 
