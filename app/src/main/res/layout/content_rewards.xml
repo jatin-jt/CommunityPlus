@@ -16,10 +16,21 @@
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="60sp"
-        android:text="300"
+        android:text="--"
+        android:textSize="100sp"
+        android:text="0"
+        android:typeface="monospace"
+        android:textColor="@color/green_reward"/>
+
+    <TextView
+        android:gravity="center"
+        android:text="Points!"
+        android:textSize="30sp"
         android:typeface="monospace"
         android:textColor="@color/green_reward"
-        android:layout_weight="4"/>
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <View
         android:layout_width="fill_parent"

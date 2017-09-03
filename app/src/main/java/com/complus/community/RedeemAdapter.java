@@ -16,6 +16,9 @@ import com.complus.community.models.RewardEvent;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,7 +59,18 @@ public class RedeemAdapter extends RecyclerView.Adapter<RedeemAdapter.MyViewHold
     public void onBindViewHolder(RedeemAdapter.MyViewHolder holder, final int position) {
 
         holder.reward_name.setText(redeemList.get(position).first.getTitle());
-        holder.date_redeemed.setText(redeemList.get(position).second);
+
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat fmt2 = new SimpleDateFormat("MMM d, ''yy");
+        String frDate = "";
+        try {
+            Date date = fmt.parse(redeemList.get(position).second.toString());
+            frDate = fmt2.format(date);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+
+        holder.date_redeemed.setText(frDate);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

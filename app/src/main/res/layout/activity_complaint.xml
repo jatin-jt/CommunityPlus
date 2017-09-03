@@ -13,11 +13,11 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/reward_title"
+            android:id="@+id/complaint_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Reward Event"
+            android:text="Complaint"
             android:transitionName="item_name_anim"
             android:textColor="#000000"
             android:textSize="20dp"
@@ -38,10 +38,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
 
             <ImageView
-                android:id="@+id/reward_pic"
+                android:id="@+id/complaint_pic"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
                 android:layout_height="200dp" />
@@ -51,13 +53,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Description"
+                android:text="Category"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reward_desc"
+                android:id="@+id/complaint_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="10234 to 12439"
+                android:textColor="#000000"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="#000000" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Threat Level"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/complaint_threat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="abcde ajkje"
@@ -74,30 +99,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Points"
+                android:text="Description"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reward_points_detail"
+                android:id="@+id/complaint_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="200"
                 android:textColor="#000000"
                 android:textSize="20dp" />
 
-            <Button
-                android:id="@+id/reward_redeem_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="25dp"
-                android:layout_gravity="center"
-                android:textColor="@color/tw__composer_white"
-                android:background="@drawable/oval2"
-                android:text="Redeem"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.2dp"
+                android:background="#000000" />
 
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Date"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/complaint_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="200"
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
 
         </LinearLayout>
