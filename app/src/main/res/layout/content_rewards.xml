@@ -12,9 +12,11 @@
     <TextView
         android:id="@+id/rewards_points"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textAlignment="center"
         android:gravity="center"
+        android:textSize="60sp"
+        android:text="--"
         android:textSize="100sp"
         android:text="0"
         android:typeface="monospace"
