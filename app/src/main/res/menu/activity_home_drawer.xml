@@ -19,6 +19,10 @@
             android:icon="@drawable/ic_report_black_24dp"
             android:title="Add Complaint" />
         <item
+            android:id="@+id/nav_viewcomplaints"
+            android:icon="@drawable/ic_mycomplaints"
+            android:title="My Complaints" />
+        <item
             android:id="@+id/nav_leaderboard"
             android:icon="@drawable/ic_view_list_black_24dp"
             android:title="Leaderboard" />
