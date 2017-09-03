@@ -40,6 +40,7 @@ public class RewardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reward);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         redeem = (Button) findViewById(R.id.reward_redeem_button);
         String rid = getIntent().getStringExtra("ID");

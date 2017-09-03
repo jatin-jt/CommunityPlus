@@ -50,32 +50,8 @@ public class HomeActivity extends AppCompatActivity
     ImageView imageView;
 
     Button btnClaimPoints;
+    Button btnRedeemPoints;
 
-    private RecyclerView history;
-
-    private ArrayList<RewardEvent> redeemed;
-    private ArrayList<EarnEvent> earned;
-
-    private RewardsAdapter redeemed_adapter;
-    private EventAdapter earned_adapter;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.history_earned: {
-                    return true;
-                }
-                case R.id.history_redeemed: {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +61,9 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         tvScore = (TextView) findViewById(R.id.tv_point);
-        history = (RecyclerView)findViewById(R.id.lv_recents);
 
         btnClaimPoints = (Button) findViewById(R.id.btn_claim_points);
+        btnRedeemPoints = (Button) findViewById(R.id.btn_redeem_points);
 
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(user.getUid());
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -107,8 +83,6 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -123,10 +97,15 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
+        btnRedeemPoints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,Rewards.class));
+            }
+        });
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View view = navigation.findViewById(R.id.history_earned);
-        view.performClick();
 
         View header = navigationView.getHeaderView(0);
 

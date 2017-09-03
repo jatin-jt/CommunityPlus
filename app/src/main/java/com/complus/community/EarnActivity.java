@@ -23,6 +23,7 @@ public class EarnActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_earn);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String eId = getIntent().getStringExtra("ID");
 

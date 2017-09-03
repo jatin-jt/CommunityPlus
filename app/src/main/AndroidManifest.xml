@@ -94,7 +94,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.complus.community.HomeActivity" />
         </activity>
-        <activity android:name=".EarnActivity" />
+        <activity android:name=".EarnActivity"
+            android:parentActivityName=".Events">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
         <activity
             android:name=".MyComplaints"
             android:label="@string/title_activity_my_complaints"
@@ -104,7 +109,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.complus.community.HomeActivity" />
         </activity>
-        <activity android:name=".RewardActivity" />
+
+        <activity android:name=".RewardActivity"
+            android:parentActivityName=".Rewards">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.complus.community.HomeActivity" />
+        </activity>
+
         <activity android:name=".ScannerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
