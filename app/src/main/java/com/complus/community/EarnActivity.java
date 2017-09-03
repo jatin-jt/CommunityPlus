@@ -11,6 +11,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EarnActivity extends AppCompatActivity {
 
     TextView earnTitle, earnDesc, earnPoints, earnLoc, earnDur;
@@ -35,7 +39,25 @@ public class EarnActivity extends AppCompatActivity {
                 EarnEvent ee = dataSnapshot.getValue(EarnEvent.class);
                 earnTitle.setText(ee.getTitle());
                 earnDesc.setText(ee.getDesc());
-                earnDur.setText(ee.getStartdate()+"-"+ee.getEnddate());
+
+                SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+                SimpleDateFormat fmt2 = new SimpleDateFormat("MMM d, ''yy");
+                String frDate = "";
+                try {
+                    Date date = fmt.parse(ee.getStartdate().toString());
+                    frDate = fmt2.format(date);
+                } catch (ParseException pe) {
+                    pe.printStackTrace();
+                }
+                String frDate2 = "";
+                try {
+                    Date date2 = fmt.parse(ee.getEnddate().toString());
+                    frDate2 = fmt2.format(date2);
+                } catch (ParseException pe) {
+                    pe.printStackTrace();
+                }
+
+                earnDur.setText(frDate+" - "+frDate2);
                 earnLoc.setText(ee.getLocation());
                 earnPoints.setText(ee.getPoints());
             }
