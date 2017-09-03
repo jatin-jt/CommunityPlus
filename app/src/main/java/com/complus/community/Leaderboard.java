@@ -22,6 +22,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Leaderboard extends AppCompatActivity {
 
@@ -51,6 +53,15 @@ public class Leaderboard extends AppCompatActivity {
                                         ,ds.child("name").getValue().toString()
                                         ,ds.child("score").getValue().toString()));
                             }
+                            Collections.sort(overall,new Comparator<LeaderboardPerson>() {
+                                @Override
+                                public int compare(LeaderboardPerson s1, LeaderboardPerson s2) {
+                                    if (Integer.parseInt(s1.getPoints()) < Integer.parseInt(s2.getPoints()))
+                                        return 1;
+                                    else
+                                        return 0;
+                                }
+                            });
                             adapter = new LeaderboardAdapter(overall,getApplicationContext());
                             leaderboard.setAdapter(adapter);
                         }
@@ -130,6 +141,9 @@ public class Leaderboard extends AppCompatActivity {
                             ,ds.child("name").getValue().toString()
                             ,ds.child("score").getValue().toString()));
                 }
+
+
+
                 adapter = new LeaderboardAdapter(local,getApplicationContext());
                 leaderboard.setAdapter(adapter);
             }
