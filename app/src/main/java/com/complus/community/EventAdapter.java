@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.complus.community.models.EarnEvent;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,11 +59,31 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
         holder.event_name.setText(eventList.get(position).getTitle());
         holder.event_location.setText(eventList.get(position).getLocation());
+
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat fmt2 = new SimpleDateFormat("MMM d, ''yy");
+        String frDate = "";
+        try {
+            Date date = fmt.parse(eventList.get(position).getStartdate().toString());
+            frDate = fmt2.format(date);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+        String frDate2 = "";
+        try {
+            Date date2 = fmt.parse(eventList.get(position).getEnddate().toString());
+            frDate2 = fmt2.format(date2);
+        } catch (ParseException pe) {
+            pe.printStackTrace();
+        }
+
+
+
         if(eventList.get(position).getStartdate().equals(eventList.get(position).getEnddate())){
-            holder.event_date.setText(eventList.get(position).getStartdate());
+            holder.event_date.setText(frDate);
         }
         else {
-            holder.event_date.setText(eventList.get(position).getStartdate() + " to " + eventList.get(position).getEnddate());
+            holder.event_date.setText(frDate + " - " + frDate2);
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

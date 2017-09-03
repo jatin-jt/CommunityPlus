@@ -37,6 +37,12 @@ public class RewardActivity extends AppCompatActivity {
         rewardPoints = (TextView) findViewById(R.id.reward_points_detail);
         rewardDesc = (TextView) findViewById(R.id.reward_desc);
         rewardpic = (ImageView) findViewById(R.id.reward_pic);
+        redeem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("reward-events").child(rid);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -48,12 +54,7 @@ public class RewardActivity extends AppCompatActivity {
                 Glide.with(getApplicationContext()).load(re.getPiclink()).into(rewardpic);
             }
 
-        redeem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
