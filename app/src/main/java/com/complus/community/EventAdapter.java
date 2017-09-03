@@ -62,6 +62,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         else {
             holder.event_date.setText(eventList.get(position).getStartdate() + " to " + eventList.get(position).getEnddate());
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext,EarnActivity.class);
+                intent.putExtra("ID",eventList.get(position).getId());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+            }
+        });
         Log.d(TAG, "onBindViewHolder: "+ eventList.get(position).getEnddate());
     }
 

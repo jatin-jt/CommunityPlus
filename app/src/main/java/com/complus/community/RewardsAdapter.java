@@ -1,6 +1,7 @@
 package com.complus.community;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -58,6 +59,16 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
         Log.d(TAG, "onBindViewHolder: "+rewardList.get(position).getPiclink());
         Glide.with(mcontext).load(rewardList.get(position).getPiclink())
                 .into(holder.reward_pic);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext,RewardActivity.class);
+                intent.putExtra("ID",rewardList.get(position).getId());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
+            }
+        });
 
     }
 
