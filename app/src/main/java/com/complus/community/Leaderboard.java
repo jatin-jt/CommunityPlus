@@ -58,10 +58,15 @@ public class Leaderboard extends AppCompatActivity {
                                 public int compare(LeaderboardPerson s1, LeaderboardPerson s2) {
                                     if (Integer.parseInt(s1.getPoints()) < Integer.parseInt(s2.getPoints()))
                                         return 1;
+                                    else if(Integer.parseInt(s1.getPoints()) > Integer.parseInt(s2.getPoints()))
+                                        return -1;
                                     else
                                         return 0;
                                 }
                             });
+                            for(int i = 0;i<overall.size();++i){
+                                overall.get(i).setRank(String.valueOf(i+1));
+                            }
                             adapter = new LeaderboardAdapter(overall,getApplicationContext());
                             leaderboard.setAdapter(adapter);
                         }
