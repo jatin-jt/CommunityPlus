@@ -81,7 +81,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/reward_points"
+                android:id="@+id/reward_points_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="200"

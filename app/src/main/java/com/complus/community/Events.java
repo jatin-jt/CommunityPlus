@@ -54,6 +54,7 @@ public class Events extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
+                                current.clear();
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     EarnEvent haha = ds.getValue(EarnEvent.class);
                                     if (haha.getStartdate().compareTo(date) > 0) {
@@ -93,12 +94,13 @@ public class Events extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
+                                future.clear();
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     EarnEvent haha = ds.getValue(EarnEvent.class);
                                     if (haha.getStartdate().compareTo(date) <= 0) {
                                         continue;
                                     }
-                                    Log.d(TAG, "onDataChange: " + haha.getEnddate());
+                                    Log.d(TAG, "onDataChange: " + ds);
                                     future.add(haha);
                                 }
                             }
@@ -126,13 +128,14 @@ public class Events extends AppCompatActivity {
 
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+                            past.clear();
                             if (dataSnapshot.exists()) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     EarnEvent haha = ds.getValue(EarnEvent.class);
                                     if (haha.getEnddate().compareTo(date) >= 0) {
                                         break;
                                     }
-                                    Log.d(TAG, "onDataChange: " + haha.getEnddate());
+                                    Log.d(TAG, "onDataChange: " + ds);
                                     past.add(haha);
                                 }
                                 adapter_past = new EventAdapter(past, getApplicationContext());
