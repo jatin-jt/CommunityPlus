@@ -58,7 +58,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/earn_desc"
+                android:id="@+id/reward_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="abcde ajkje"
@@ -81,7 +81,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/earn_points"
+                android:id="@+id/reward_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="200"
