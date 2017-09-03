@@ -16,7 +16,7 @@
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="60sp"
-        android:text="300"
+        android:text="--"
         android:typeface="monospace"
         android:textColor="@color/green_reward"
         android:layout_weight="4"/>
