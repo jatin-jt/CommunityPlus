@@ -17,7 +17,7 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/event_item_name"
+                android:id="@+id/event_item_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
@@ -31,7 +31,7 @@
                 android:background="#000000" />
 
             <TextView
-                android:id="@+id/event_item_location"
+                android:id="@+id/event_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="2dp"

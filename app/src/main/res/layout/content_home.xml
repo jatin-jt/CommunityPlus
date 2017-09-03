@@ -45,25 +45,31 @@
         android:id="@+id/btn_claim_points"
         android:layout_below="@id/circle"
         android:background="@color/colorPrimary"
-        android:text="C l a i m   P o i n t s"
+        android:text="Claim Points"
         android:typeface="monospace"
+        android:textSize="22sp"
         android:textStyle="bold"
+        android:padding="18dp"
+        android:layout_gravity="center"
         android:textAlignment="center"
         android:textColor="@color/tw__solid_white"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content" />
 
     <Button
         android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:textSize="22sp"
         android:id="@+id/btn_redeem_points"
         android:layout_below="@id/circle"
+        android:padding="16dp"
         android:background="@color/colorPrimary"
-        android:text="R e d e e m   P o i n t s"
+        android:text="Redeem Points"
         android:typeface="monospace"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/tw__solid_white"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content" />
 
 
