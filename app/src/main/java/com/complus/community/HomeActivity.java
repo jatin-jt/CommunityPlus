@@ -188,7 +188,14 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_addcomplaint) {
+
             startActivity(new Intent(this,AddComplaint.class));
+
+        }else if(id == R.id.nav_viewcomplaints){
+
+            Intent intent = new Intent(this,MyComplaints.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_leaderboard) {
             startActivity(new Intent(this,Leaderboard.class));
 
@@ -198,6 +205,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_profile) {
+
             Intent intent = new Intent(this, ProfileActivity.class);
             intent.putExtra("userid", user.getUid());
 

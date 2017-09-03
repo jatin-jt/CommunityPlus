@@ -13,4 +13,5 @@
     <string name="title_activity_rewards">Rewards</string>
     <string name="title_activity_leaderboard">Leaderboard</string>
     <string name="title_activity_history">History</string>
+    <string name="title_activity_my_complaints">My Complaints</string>
 </resources>
